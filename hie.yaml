@@ -1,0 +1,13 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:aoc2020"
+
+    - path: "exe/Fetch.hs"
+      component: "aoc2020:exe:fetch"
+
+    - path: "exe/Solve.hs"
+      component: "aoc2020:exe:solve"
+
+    - path: "test"
+      component: "aoc2020:test:spec"

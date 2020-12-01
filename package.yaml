@@ -1,0 +1,134 @@
+name: aoc2020
+version: 0.1.0.0
+github: "pwm/aoc2020"
+license: BSD3
+license-file: LICENSE
+author: "pwm"
+
+extra-source-files:
+  - README.md
+
+data-files:
+  - input/*.txt
+
+dependencies:
+  - base >= 4.7 && < 5
+  - bytestring
+  - containers
+  - cookie
+  - directory
+  - either
+  - generic-lens
+  - http-client
+  - lens
+  - megaparsec
+  - mtl
+  - optparse-applicative
+  - protolude
+  - req
+  - split
+  - text
+  - time
+
+library:
+  source-dirs: src
+
+executables:
+  fetch:
+    source-dirs: exe
+    main: Fetch.hs
+    other-modules: []
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - aoc2020
+  solve:
+    source-dirs: exe
+    main: Solve.hs
+    other-modules: []
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - aoc2020
+
+tests:
+  spec:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - aoc2020
+      - hspec
+      - HUnit
+      - quickcheck-instances
+      - QuickCheck
+    # Escape hatch to pass stuff directly to cabal
+    # https://github.com/sol/hpack#passing-things-to-cabal-verbatim
+    verbatim:
+      build-tool-depends: hspec-discover:hspec-discover == 2.*
+
+default-extensions:
+  - AllowAmbiguousTypes
+  - BangPatterns
+  - BinaryLiterals
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - DeriveAnyClass
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveTraversable
+  - DerivingStrategies
+  - DerivingVia
+  - DuplicateRecordFields
+  - EmptyCase
+  - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
+  - GeneralizedNewtypeDeriving
+  - ImportQualifiedPost
+  - InstanceSigs
+  - KindSignatures
+  - LambdaCase
+  - MultiParamTypeClasses
+  - MultiWayIf
+  - NamedFieldPuns
+  - NoImplicitPrelude
+  - NoStarIsType
+  - NumericUnderscores
+  - OverloadedLabels
+  - OverloadedStrings
+  - PatternSynonyms
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - StrictData
+  - TupleSections
+  - TypeApplications
+  - TypeOperators
+  - ViewPatterns
+
+ghc-options:
+  - -Weverything
+  - -Wno-unused-packages # reduce noise
+  - -Wno-missing-safe-haskell-mode # no explicit safe haskell
+  - -Wno-missing-exported-signatures # missing-exported-signatures turns off the more strict -Wmissing-signatures.
+  - -Wno-missing-import-lists # Requires explicit imports of _every_ function (e.g. ‘$’); too strict
+  - -Wno-missed-specialisations # When GHC can’t specialize a polymorphic function.
+  - -Wno-all-missed-specialisations # See missed-specialisations
+  - -Wno-unsafe # Don’t use Safe Haskell warnings
+  - -Wno-safe # Don’t use Safe Haskell warnings
+  - -Wno-missing-local-signatures # Warning for polymorphic local bindings; nothing wrong with those.
+  - -Wno-monomorphism-restriction # Don’t warn if the monomorphism restriction is used
+  - -Wno-missing-export-lists # Don't warn if export list is missing
+  - -Wno-missing-home-modules # Don't warn in GHCi when loading modules (this is a bogus warning)
+  - -O2
