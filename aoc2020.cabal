@@ -18,6 +18,7 @@ extra-source-files:
 data-files:
     input/Day00.txt
     input/Day01.txt
+    input/Day02.txt
 
 source-repository head
   type: git
@@ -28,6 +29,7 @@ library
       AoC
       AoC.Days.Day00
       AoC.Days.Day01
+      AoC.Days.Day02
       AoC.Lib.ArgParser
       AoC.Lib.Day
       AoC.Lib.Display
