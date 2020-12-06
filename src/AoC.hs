@@ -5,6 +5,7 @@ import AoC.Days.Day02 qualified as Day02
 import AoC.Days.Day03 qualified as Day03
 import AoC.Days.Day04 qualified as Day04
 import AoC.Days.Day05 qualified as Day05
+import AoC.Days.Day06 qualified as Day06
 import AoC.Lib.Day
 import AoC.Lib.Solver
 import AoC.Prelude
@@ -15,5 +16,6 @@ solutions =
     mkSolver Day02.parse Day02.solveA Day02.solveB,
     mkSolver Day03.parse Day03.solveA Day03.solveB,
     mkSolver Day04.parse Day04.solveA Day04.solveB,
-    mkSolver Day05.parse Day05.solveA Day05.solveB
+    mkSolver Day05.parse Day05.solveA Day05.solveB,
+    mkSolver Day06.parse Day06.solveA Day06.solveB
   ]
