@@ -3,6 +3,9 @@ module AoC.Prelude
     -- base Prelude
     String,
     lines,
+    unlines,
+    words,
+    unwords,
     readFile,
     -- custom
     error,
@@ -28,9 +31,9 @@ import Data.Map.Strict qualified as Map
 import Data.Maybe as X hiding (fromJust)
 import Data.Set qualified as Set
 import Paths_aoc2020 (getDataFileName)
-import Protolude as X hiding (from, lines, many, option, readFile, some, to, try, uncons, unsnoc)
+import Protolude as X hiding (from, lines, many, option, readFile, some, to, try, uncons, unlines, unsnoc, unwords, words)
 import System.IO.Unsafe (unsafePerformIO)
-import Prelude (String, lines, readFile)
+import Prelude (String, lines, readFile, unlines, unwords, words)
 
 error, success :: String -> IO ()
 error e = print e >> exitFailure
