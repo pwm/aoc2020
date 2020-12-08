@@ -1,6 +1,7 @@
 module AoC.Lib.Solver where
 
 import AoC.Lib.Day
+import AoC.Lib.File
 import AoC.Prelude
 import Data.Map.Strict ((!?))
 import Data.Map.Strict qualified as Map
@@ -10,6 +11,7 @@ solveDay sols day = case solMap sols !? day of
   Nothing -> error $ "Day " <> displayDay day <> " does not yet exists."
   Just solver -> solver day
   where
+    solMap :: [a] -> Map Day a
     solMap = Map.fromList . fmap (first UnsafeMkDay) . zip [1 ..]
 
 mkSolver ::
@@ -20,10 +22,7 @@ mkSolver ::
   Day ->
   IO ()
 mkSolver parser solverA solverB day = do
-  file <- readFile =<< getDataFileName ("input/" <> dayFile day)
+  file <- loadInputFile day
   case parser file of
-    Nothing -> error ("Cannot parse input file " <> dayFile day)
+    Nothing -> error ("Cannot parse input file " <> displayDayFile day)
     Just input -> print (solverA input, solverB input)
-  where
-    dayFile :: Day -> String
-    dayFile d = "Day" <> displayDay d <> ".txt"

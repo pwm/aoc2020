@@ -46,6 +46,7 @@ library
       AoC.Lib.Day
       AoC.Lib.Display
       AoC.Lib.Fetcher
+      AoC.Lib.File
       AoC.Lib.Grid
       AoC.Lib.Parser
       AoC.Lib.SimpleParser
@@ -135,7 +136,15 @@ test-suite spec
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      AoC.Days.Day00Spec
+      AoC.Days.Day01Spec
+      AoC.Days.Day02Spec
+      AoC.Days.Day03Spec
+      AoC.Days.Day04Spec
+      AoC.Days.Day05Spec
+      AoC.Days.Day06Spec
+      AoC.Days.Day07Spec
+      AoC.Days.Day08Spec
+      AoC.DayTester
       Paths_aoc2020
   hs-source-dirs:
       test

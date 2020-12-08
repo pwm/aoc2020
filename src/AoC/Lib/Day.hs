@@ -16,3 +16,6 @@ mkDay i
 
 displayDay :: Day -> String
 displayDay = printf "%02d" . getDay
+
+displayDayFile :: Day -> String
+displayDayFile d = "Day" <> displayDay d <> ".txt"

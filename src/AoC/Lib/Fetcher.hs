@@ -12,7 +12,7 @@ import Web.Cookie (SetCookie (..), defaultSetCookie)
 
 fetchDay :: String -> Day -> IO ()
 fetchDay year day = do
-  fp <- getDataFileName $ "input/Day" <> displayDay day <> ".txt"
+  fp <- getDataFileName $ "input/" <> displayDayFile day
   alreadyFetched <- doesFileExist fp
   when alreadyFetched $ error "Input file already fetched"
   session <- getEnv "AOC_SESSION"
