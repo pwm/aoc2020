@@ -23,7 +23,8 @@ module AoC.Prelude
   )
 where
 
-import Control.Lens as X hiding ((<.>))
+import Control.Lens as X hiding (op, (<.>), (<|), (|>))
+import Control.Monad.State.Strict as X
 import Data.Bits as X
 import Data.Either as X
 import Data.Generics.Labels as X ()
@@ -31,7 +32,7 @@ import Data.Map.Strict qualified as Map
 import Data.Maybe as X hiding (fromJust)
 import Data.Set qualified as Set
 import Paths_aoc2020 (getDataFileName)
-import Protolude as X hiding (from, lines, many, option, readFile, some, to, try, uncons, unlines, unsnoc, unwords, words)
+import Protolude as X hiding (State, StateT, evalState, evalStateT, execState, execStateT, from, lines, many, option, readFile, runState, runStateT, some, to, try, uncons, unlines, unsnoc, unwords, withState, words)
 import System.IO.Unsafe (unsafePerformIO)
 import Prelude (String, lines, readFile, unlines, unwords, words)
 

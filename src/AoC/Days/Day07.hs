@@ -45,6 +45,7 @@ adjListP :: Parser (Key, Vals)
 adjListP = do
   k <- unwords <$> (some lowerChar <* sc) `manyTill` symbol "bags contain"
   vs <- try someItemP <|> noItemP
+  _ <- sc
   pure (k, vs)
   where
     someItemP :: Parser Vals

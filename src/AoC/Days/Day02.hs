@@ -38,4 +38,4 @@ passP =
     <$> (L.decimal <* char '-')
     <*> (L.decimal <* sc)
     <*> (lowerChar <* symbol ":")
-    <*> some lowerChar
+    <*> (some lowerChar <* sc)

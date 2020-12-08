@@ -22,7 +22,7 @@ solveB = length . mapMaybe parsePassport
 type PassportLike = Map Key String
 
 passportLikeP :: Parser PassportLike
-passportLikeP = Map.fromList <$> some keyValP
+passportLikeP = Map.fromList <$> (some keyValP <* sc)
 
 keyValP :: Parser (Key, String)
 keyValP = (,) <$> keyP <* char ':' <*> valP

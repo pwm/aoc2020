@@ -4,6 +4,7 @@ module AoC.Lib.Parser
     parseFileWith,
     blocksP,
     intP,
+    signedIntP,
     lexeme,
     symbol,
     sc,
@@ -15,7 +16,7 @@ where
 
 import AoC.Lib.SimpleParser as X
 import AoC.Prelude
-import Text.Megaparsec as X
+import Text.Megaparsec as X hiding (State (..))
 import Text.Megaparsec.Char as X
 import Text.Megaparsec.Char.Lexer qualified as Lexer
 
@@ -25,10 +26,13 @@ parseFileWith :: Parser a -> String -> Maybe [a]
 parseFileWith = parseMaybe . blocksP
 
 blocksP :: Parser a -> Parser [a]
-blocksP blockP = blockP `sepEndBy` newline <* eof
+blocksP blockP = some blockP <* eof
 
 intP :: Parser Int
 intP = lexeme Lexer.decimal
+
+signedIntP :: Parser Int
+signedIntP = Lexer.signed sc intP
 
 lexeme :: Parser a -> Parser a
 lexeme = Lexer.lexeme sc

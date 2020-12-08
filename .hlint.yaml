@@ -9,7 +9,7 @@
     - { name: [Data.Set.Ordered], as: OSet }
     - { name: [Data.Map, Data.Map.Strict], as: Map }
     - { name: [Data.HashMap.Strict, Data.HashMap.Lazy], as: HMap }
-    - { name: [Data.Sequence], as: Sequence }
+    - { name: [Data.Sequence], as: Seq }
     - { name: [Data.ByteString, Data.ByteString.Builder, Data.ByteString.Char8], as: BS }
     - { name: [Data.ByteString.Lazy, Data.ByteString.Lazy.Char8], as: BSL }
     - { name: [Data.Text, Data.Text.Encoding, Data.Text.IO], as: T }
