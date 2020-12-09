@@ -11,7 +11,7 @@ import Test.Hspec
 spec :: Spec
 spec =
   dayTester
-    (UnsafeMkDay 4)
+    (mkDay 4)
     parse
     (solveA, 200)
     (solveB, 116)

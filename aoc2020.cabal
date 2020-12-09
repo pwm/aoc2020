@@ -138,6 +138,7 @@ test-suite spec
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      AoC.Days.Day00Spec
       AoC.Days.Day01Spec
       AoC.Days.Day02Spec
       AoC.Days.Day03Spec
