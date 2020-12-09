@@ -20,6 +20,7 @@ module AoC.Prelude
     charAt,
     l2p,
     getDataFileName,
+    choose,
   )
 where
 
@@ -77,3 +78,8 @@ charAt x = fmap fst . uncons . drop x
 l2p :: [a] -> Maybe (a, a)
 l2p [a, b] = Just (a, b)
 l2p _ = Nothing
+
+choose :: Int -> [a] -> [[a]]
+choose 0 _ = [[]]
+choose _ [] = []
+choose k (x : xs) = fmap (x :) (choose (k - 1) xs) <> choose k xs

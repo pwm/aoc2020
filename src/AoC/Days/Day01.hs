@@ -14,8 +14,3 @@ solveB = headOr 0 . solveFor 3
 
 solveFor :: Int -> [Int] -> [Int]
 solveFor n = fmap product . filter ((2020 ==) . sum) . choose n
-
-choose :: Int -> [a] -> [[a]]
-choose 0 _ = [[]]
-choose _ [] = []
-choose k (x : xs) = fmap (x :) (choose (k - 1) xs) <> choose k xs
