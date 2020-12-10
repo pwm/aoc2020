@@ -27,8 +27,3 @@ findSubsetSum i x xs
   | otherwise =
     let ys = concat . filter ((x ==) . sum) . slicesOf i $ xs
      in if not (null ys) then ys else findSubsetSum (i + 1) x xs
-
-slicesOf :: Int -> [a] -> [[a]]
-slicesOf n = unfoldr $ \xs ->
-  let (s, t) = (take n xs, drop 1 xs)
-   in if length s >= n then Just (s, t) else Nothing

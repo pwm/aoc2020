@@ -21,6 +21,7 @@ module AoC.Prelude
     l2p,
     getDataFileName,
     choose,
+    slicesOf,
   )
 where
 
@@ -83,3 +84,8 @@ choose :: Int -> [a] -> [[a]]
 choose 0 _ = [[]]
 choose _ [] = []
 choose k (x : xs) = fmap (x :) (choose (k - 1) xs) <> choose k xs
+
+slicesOf :: Int -> [a] -> [[a]]
+slicesOf n = unfoldr $ \xs ->
+  let (s, t) = (take n xs, drop 1 xs)
+   in if length s >= n then Just (s, t) else Nothing
