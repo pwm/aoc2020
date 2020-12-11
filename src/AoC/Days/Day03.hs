@@ -32,8 +32,8 @@ cyclicLegs leg m =
     (vMax, hMax) = fst $ Map.findMax m
 
 leg1, leg2, leg3, leg4, leg5 :: Pos -> Pos
-leg1 = flip move [R, R, R, D]
-leg2 = flip move [R, D]
-leg3 = flip move [R, R, R, R, R, D]
-leg4 = flip move [R, R, R, R, R, R, R, D]
-leg5 = flip move [R, D, D]
+leg1 = flip move4 [R, R, R, D]
+leg2 = flip move4 [R, D]
+leg3 = flip move4 [R, R, R, R, R, D]
+leg4 = flip move4 [R, R, R, R, R, R, R, D]
+leg5 = flip move4 [R, D, D]

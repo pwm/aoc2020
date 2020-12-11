@@ -13,6 +13,7 @@ module AoC.Prelude
     unsafePrint,
     unsafePutStrLn,
     fixpoint,
+    fixpointM,
     headOr,
     enumerate,
     hasKeys,
@@ -22,6 +23,7 @@ module AoC.Prelude
     getDataFileName,
     choose,
     slicesOf,
+    lookups,
   )
 where
 
@@ -30,6 +32,7 @@ import Control.Monad.State.Strict as X
 import Data.Bits as X
 import Data.Either as X
 import Data.Generics.Labels as X ()
+import Data.Map.Strict ((!?))
 import Data.Map.Strict qualified as Map
 import Data.Maybe as X hiding (fromJust)
 import Data.Set qualified as Set
@@ -50,6 +53,11 @@ unsafePutStrLn = unsafePerformIO . putStrLn
 
 fixpoint :: (Eq a) => (a -> a) -> a -> a
 fixpoint f x = if x == f x then x else fixpoint f (f x)
+
+fixpointM :: (Monad m, Eq a) => (a -> m a) -> a -> m a
+fixpointM f x = do
+  y <- f x
+  if x == y then pure y else fixpointM f y
 
 -- headOr 0 [] -> 0
 -- headOr 0 [1, 2, 3] -> 1
@@ -89,3 +97,6 @@ slicesOf :: Int -> [a] -> [[a]]
 slicesOf n = unfoldr $ \xs ->
   let (s, t) = (take n xs, drop 1 xs)
    in if length s >= n then Just (s, t) else Nothing
+
+lookups :: Ord k => Map k v -> [k] -> [v]
+lookups g = mapMaybe (g !?)

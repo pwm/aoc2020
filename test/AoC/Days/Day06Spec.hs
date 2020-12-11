@@ -13,5 +13,5 @@ spec =
   dayTester
     (mkDay 6)
     parse
-    (solveA, 7128)
-    (solveB, 3640)
+    (solveA, 7_128)
+    (solveB, 3_640)
