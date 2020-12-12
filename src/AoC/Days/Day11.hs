@@ -56,9 +56,3 @@ parseCell = \case
   'L' -> Just Vacant
   '.' -> Just Floor
   _ -> Nothing
-
-printCell :: Cell -> Char
-printCell = \case
-  Taken -> '#'
-  Vacant -> 'L'
-  Floor -> '.'

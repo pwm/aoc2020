@@ -24,6 +24,8 @@ module AoC.Prelude
     choose,
     slicesOf,
     lookups,
+    applyTimes,
+    compose,
   )
 where
 
@@ -100,3 +102,9 @@ slicesOf n = unfoldr $ \xs ->
 
 lookups :: Ord k => Map k v -> [k] -> [v]
 lookups g = mapMaybe (g !?)
+
+applyTimes :: Int -> (b -> b) -> b -> b
+applyTimes n = compose . replicate n
+
+compose :: [b -> b] -> b -> b
+compose = foldr (.) identity

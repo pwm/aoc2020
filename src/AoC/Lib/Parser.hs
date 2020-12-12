@@ -16,7 +16,7 @@ where
 
 import AoC.Lib.SimpleParser as X
 import AoC.Prelude
-import Text.Megaparsec as X hiding (State (..))
+import Text.Megaparsec as X hiding (Pos, State (..))
 import Text.Megaparsec.Char as X
 import Text.Megaparsec.Char.Lexer qualified as Lexer
 
