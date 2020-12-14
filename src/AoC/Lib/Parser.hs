@@ -5,12 +5,18 @@ module AoC.Lib.Parser
     blocksP,
     intP,
     signedIntP,
+    w64P,
     lexeme,
     symbol,
     sc,
     enumParser,
     maybeToP,
     predToP,
+    parensP,
+    bracesP,
+    squareBracketsP,
+    angleBracketsP,
+    doubleQuotes,
   )
 where
 
@@ -33,6 +39,9 @@ intP = lexeme Lexer.decimal
 
 signedIntP :: Parser Int
 signedIntP = Lexer.signed sc intP
+
+w64P :: Parser Word64
+w64P = lexeme Lexer.decimal
 
 lexeme :: Parser a -> Parser a
 lexeme = Lexer.lexeme sc
@@ -58,3 +67,13 @@ maybeToP f = maybe empty pure . f
 
 predToP :: (a -> Bool) -> a -> Parser a
 predToP p x = if p x then pure x else empty
+
+parensP, bracesP, squareBracketsP, angleBracketsP, doubleQuotes :: Parser a -> Parser a
+parensP = "(" `inside` ")"
+bracesP = "{" `inside` "}"
+squareBracketsP = "[" `inside` "]"
+angleBracketsP = "<" `inside` ">"
+doubleQuotes = "\"" `inside` "\""
+
+inside :: String -> String -> Parser a -> Parser a
+inside b e = (symbol b >> sc) `between` (sc >> symbol e)

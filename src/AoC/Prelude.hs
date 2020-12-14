@@ -29,7 +29,7 @@ module AoC.Prelude
   )
 where
 
-import Control.Lens as X hiding (op, (<.>), (<|), (|>))
+import Control.Lens as X hiding (inside, op, (<.>), (<|), (|>))
 import Control.Monad.State.Strict as X
 import Data.Bits as X
 import Data.Either as X
