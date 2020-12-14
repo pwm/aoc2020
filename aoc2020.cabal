@@ -60,6 +60,7 @@ library
       AoC.Lib.Fetcher
       AoC.Lib.File
       AoC.Lib.Grid
+      AoC.Lib.Memo
       AoC.Lib.Parser
       AoC.Lib.SimpleParser
       AoC.Lib.Solver

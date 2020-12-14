@@ -16,4 +16,4 @@ sed -i "s/mkDay\ 0/mkDay\ $today/" test/AoC/Days/Day"$today"Spec.hs
 echo "Created test file"
 
 hpack
-echo "Run hpack"
+echo "Ran hpack"
