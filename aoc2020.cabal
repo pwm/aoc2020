@@ -31,6 +31,7 @@ data-files:
     input/Day12.txt
     input/Day13.txt
     input/Day14.txt
+    input/Day15.txt
 
 source-repository head
   type: git
@@ -54,6 +55,7 @@ library
       AoC.Days.Day12
       AoC.Days.Day13
       AoC.Days.Day14
+      AoC.Days.Day15
       AoC.Lib.ArgParser
       AoC.Lib.Day
       AoC.Lib.Display
@@ -79,11 +81,14 @@ library
     , directory
     , either
     , generic-lens
+    , hashtables
     , http-client
     , lens
+    , massiv
     , megaparsec
     , mtl
     , optparse-applicative
+    , primitive
     , protolude
     , req
     , split
@@ -106,11 +111,14 @@ executable fetch
     , directory
     , either
     , generic-lens
+    , hashtables
     , http-client
     , lens
+    , massiv
     , megaparsec
     , mtl
     , optparse-applicative
+    , primitive
     , protolude
     , req
     , split
@@ -133,11 +141,14 @@ executable solve
     , directory
     , either
     , generic-lens
+    , hashtables
     , http-client
     , lens
+    , massiv
     , megaparsec
     , mtl
     , optparse-applicative
+    , primitive
     , protolude
     , req
     , split
@@ -164,6 +175,7 @@ test-suite spec
       AoC.Days.Day12Spec
       AoC.Days.Day13Spec
       AoC.Days.Day14Spec
+      AoC.Days.Day15Spec
       AoC.DayTester
       Paths_aoc2020
   hs-source-dirs:
@@ -181,12 +193,15 @@ test-suite spec
     , directory
     , either
     , generic-lens
+    , hashtables
     , hspec
     , http-client
     , lens
+    , massiv
     , megaparsec
     , mtl
     , optparse-applicative
+    , primitive
     , protolude
     , quickcheck-instances
     , req

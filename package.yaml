@@ -19,11 +19,14 @@ dependencies:
   - directory
   - either
   - generic-lens
+  - hashtables
   - http-client
   - lens
+  - massiv
   - megaparsec
   - mtl
   - optparse-applicative
+  - primitive
   - protolude
   - req
   - split
