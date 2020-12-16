@@ -26,6 +26,7 @@ module AoC.Prelude
     lookups,
     applyTimes,
     compose,
+    substring,
   )
 where
 
@@ -108,3 +109,6 @@ applyTimes n = compose . replicate n
 
 compose :: [b -> b] -> b -> b
 compose = foldr (.) identity
+
+substring :: Int -> Int -> String -> String
+substring start end text = take (end - start) (drop start text)

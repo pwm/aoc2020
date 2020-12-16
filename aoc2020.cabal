@@ -32,6 +32,7 @@ data-files:
     input/Day13.txt
     input/Day14.txt
     input/Day15.txt
+    input/Day16.txt
 
 source-repository head
   type: git
@@ -56,6 +57,7 @@ library
       AoC.Days.Day13
       AoC.Days.Day14
       AoC.Days.Day15
+      AoC.Days.Day16
       AoC.Lib.ArgParser
       AoC.Lib.Day
       AoC.Lib.Display
@@ -176,6 +178,7 @@ test-suite spec
       AoC.Days.Day13Spec
       AoC.Days.Day14Spec
       AoC.Days.Day15Spec
+      AoC.Days.Day16Spec
       AoC.DayTester
       Paths_aoc2020
   hs-source-dirs:
