@@ -27,6 +27,8 @@ module AoC.Prelude
     applyTimes,
     compose,
     substring,
+    tupleMin,
+    tupleMax,
   )
 where
 
@@ -112,3 +114,7 @@ compose = foldr (.) identity
 
 substring :: Int -> Int -> String -> String
 substring start end text = take (end - start) (drop start text)
+
+tupleMin, tupleMax :: (Ord a, Each s s a a) => s -> a
+tupleMin = minimum . toListOf each
+tupleMax = maximum . toListOf each
