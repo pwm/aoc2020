@@ -34,6 +34,7 @@ data-files:
     input/Day15.txt
     input/Day16.txt
     input/Day17.txt
+    input/Day18.txt
 
 source-repository head
   type: git
@@ -60,6 +61,7 @@ library
       AoC.Days.Day15
       AoC.Days.Day16
       AoC.Days.Day17
+      AoC.Days.Day18
       AoC.Lib.ArgParser
       AoC.Lib.Day
       AoC.Lib.Display
@@ -92,6 +94,7 @@ library
     , megaparsec
     , mtl
     , optparse-applicative
+    , parser-combinators
     , primitive
     , protolude
     , req
@@ -122,6 +125,7 @@ executable fetch
     , megaparsec
     , mtl
     , optparse-applicative
+    , parser-combinators
     , primitive
     , protolude
     , req
@@ -152,6 +156,7 @@ executable solve
     , megaparsec
     , mtl
     , optparse-applicative
+    , parser-combinators
     , primitive
     , protolude
     , req
@@ -182,6 +187,7 @@ test-suite spec
       AoC.Days.Day15Spec
       AoC.Days.Day16Spec
       AoC.Days.Day17Spec
+      AoC.Days.Day18Spec
       AoC.DayTester
       Paths_aoc2020
   hs-source-dirs:
@@ -207,6 +213,7 @@ test-suite spec
     , megaparsec
     , mtl
     , optparse-applicative
+    , parser-combinators
     , primitive
     , protolude
     , quickcheck-instances
