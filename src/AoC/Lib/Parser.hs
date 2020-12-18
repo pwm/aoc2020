@@ -76,4 +76,4 @@ angleBracketsP = "<" `inside` ">"
 doubleQuotes = "\"" `inside` "\""
 
 inside :: String -> String -> Parser a -> Parser a
-inside b e = (symbol b >> sc) `between` (sc >> symbol e)
+inside b e = (symbol b *> sc) `between` (sc *> symbol e)
