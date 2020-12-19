@@ -18,6 +18,7 @@ dependencies:
   - cookie
   - directory
   - either
+  - extra
   - generic-lens
   - hashtables
   - http-client

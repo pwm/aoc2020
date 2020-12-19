@@ -1,6 +1,6 @@
 { mkDerivation, base, bytestring, containers, cookie, directory
-, either, generic-lens, hashtables, hpack, hspec, hspec-discover
-, http-client, HUnit, lens, massiv, megaparsec, mtl
+, either, extra, generic-lens, hashtables, hpack, hspec
+, hspec-discover, http-client, HUnit, lens, massiv, megaparsec, mtl
 , optparse-applicative, parser-combinators, primitive, protolude
 , QuickCheck, quickcheck-instances, req, split, stdenv, text, time
 }:
@@ -12,23 +12,23 @@ mkDerivation {
   isExecutable = true;
   enableSeparateDataOutput = true;
   libraryHaskellDepends = [
-    base bytestring containers cookie directory either generic-lens
-    hashtables http-client lens massiv megaparsec mtl
+    base bytestring containers cookie directory either extra
+    generic-lens hashtables http-client lens massiv megaparsec mtl
     optparse-applicative parser-combinators primitive protolude req
     split text time
   ];
   libraryToolDepends = [ hpack ];
   executableHaskellDepends = [
-    base bytestring containers cookie directory either generic-lens
-    hashtables http-client lens massiv megaparsec mtl
+    base bytestring containers cookie directory either extra
+    generic-lens hashtables http-client lens massiv megaparsec mtl
     optparse-applicative parser-combinators primitive protolude req
     split text time
   ];
   testHaskellDepends = [
-    base bytestring containers cookie directory either generic-lens
-    hashtables hspec http-client HUnit lens massiv megaparsec mtl
-    optparse-applicative parser-combinators primitive protolude
-    QuickCheck quickcheck-instances req split text time
+    base bytestring containers cookie directory either extra
+    generic-lens hashtables hspec http-client HUnit lens massiv
+    megaparsec mtl optparse-applicative parser-combinators primitive
+    protolude QuickCheck quickcheck-instances req split text time
   ];
   testToolDepends = [ hspec-discover ];
   prePatch = "hpack";

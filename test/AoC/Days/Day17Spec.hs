@@ -14,4 +14,4 @@ spec =
     (mkDay 17)
     parse
     (solveA, 215)
-    (solveB, 1728)
+    (solveB, 1_728)

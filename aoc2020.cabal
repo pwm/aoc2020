@@ -35,6 +35,7 @@ data-files:
     input/Day16.txt
     input/Day17.txt
     input/Day18.txt
+    input/Day19.txt
 
 source-repository head
   type: git
@@ -62,6 +63,7 @@ library
       AoC.Days.Day16
       AoC.Days.Day17
       AoC.Days.Day18
+      AoC.Days.Day19
       AoC.Lib.ArgParser
       AoC.Lib.Day
       AoC.Lib.Display
@@ -86,6 +88,7 @@ library
     , cookie
     , directory
     , either
+    , extra
     , generic-lens
     , hashtables
     , http-client
@@ -117,6 +120,7 @@ executable fetch
     , cookie
     , directory
     , either
+    , extra
     , generic-lens
     , hashtables
     , http-client
@@ -148,6 +152,7 @@ executable solve
     , cookie
     , directory
     , either
+    , extra
     , generic-lens
     , hashtables
     , http-client
@@ -188,6 +193,7 @@ test-suite spec
       AoC.Days.Day16Spec
       AoC.Days.Day17Spec
       AoC.Days.Day18Spec
+      AoC.Days.Day19Spec
       AoC.DayTester
       Paths_aoc2020
   hs-source-dirs:
@@ -204,6 +210,7 @@ test-suite spec
     , cookie
     , directory
     , either
+    , extra
     , generic-lens
     , hashtables
     , hspec
