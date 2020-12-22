@@ -36,6 +36,9 @@ data-files:
     input/Day17.txt
     input/Day18.txt
     input/Day19.txt
+    input/Day20.txt
+    input/Day21.txt
+    input/Day22.txt
 
 source-repository head
   type: git
@@ -64,6 +67,9 @@ library
       AoC.Days.Day17
       AoC.Days.Day18
       AoC.Days.Day19
+      AoC.Days.Day20
+      AoC.Days.Day21
+      AoC.Days.Day22
       AoC.Lib.ArgParser
       AoC.Lib.Day
       AoC.Lib.Display
@@ -93,6 +99,7 @@ library
     , hashtables
     , http-client
     , lens
+    , logict
     , massiv
     , megaparsec
     , mtl
@@ -125,6 +132,7 @@ executable fetch
     , hashtables
     , http-client
     , lens
+    , logict
     , massiv
     , megaparsec
     , mtl
@@ -157,6 +165,7 @@ executable solve
     , hashtables
     , http-client
     , lens
+    , logict
     , massiv
     , megaparsec
     , mtl
@@ -194,6 +203,9 @@ test-suite spec
       AoC.Days.Day17Spec
       AoC.Days.Day18Spec
       AoC.Days.Day19Spec
+      AoC.Days.Day20Spec
+      AoC.Days.Day21Spec
+      AoC.Days.Day22Spec
       AoC.DayTester
       Paths_aoc2020
   hs-source-dirs:
@@ -216,6 +228,7 @@ test-suite spec
     , hspec
     , http-client
     , lens
+    , logict
     , massiv
     , megaparsec
     , mtl

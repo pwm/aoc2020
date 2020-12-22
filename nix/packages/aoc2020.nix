@@ -1,8 +1,9 @@
 { mkDerivation, base, bytestring, containers, cookie, directory
 , either, extra, generic-lens, hashtables, hpack, hspec
-, hspec-discover, http-client, HUnit, lens, massiv, megaparsec, mtl
-, optparse-applicative, parser-combinators, primitive, protolude
-, QuickCheck, quickcheck-instances, req, split, stdenv, text, time
+, hspec-discover, http-client, HUnit, lens, logict, massiv
+, megaparsec, mtl, optparse-applicative, parser-combinators
+, primitive, protolude, QuickCheck, quickcheck-instances, req
+, split, stdenv, text, time
 }:
 mkDerivation {
   pname = "aoc2020";
@@ -13,20 +14,20 @@ mkDerivation {
   enableSeparateDataOutput = true;
   libraryHaskellDepends = [
     base bytestring containers cookie directory either extra
-    generic-lens hashtables http-client lens massiv megaparsec mtl
-    optparse-applicative parser-combinators primitive protolude req
+    generic-lens hashtables http-client lens logict massiv megaparsec
+    mtl optparse-applicative parser-combinators primitive protolude req
     split text time
   ];
   libraryToolDepends = [ hpack ];
   executableHaskellDepends = [
     base bytestring containers cookie directory either extra
-    generic-lens hashtables http-client lens massiv megaparsec mtl
-    optparse-applicative parser-combinators primitive protolude req
+    generic-lens hashtables http-client lens logict massiv megaparsec
+    mtl optparse-applicative parser-combinators primitive protolude req
     split text time
   ];
   testHaskellDepends = [
     base bytestring containers cookie directory either extra
-    generic-lens hashtables hspec http-client HUnit lens massiv
+    generic-lens hashtables hspec http-client HUnit lens logict massiv
     megaparsec mtl optparse-applicative parser-combinators primitive
     protolude QuickCheck quickcheck-instances req split text time
   ];

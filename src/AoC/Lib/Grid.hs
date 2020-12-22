@@ -88,20 +88,20 @@ mkSquare ln hn = mkRect ln hn ln hn
 
 --
 
+listToGrid :: [[a]] -> GridOf a
+listToGrid =
+  Map.fromList
+    . concatMap (\(x, l) -> fmap (first (x,)) l)
+    . zip [0 ..]
+    . fmap (zip [0 ..])
+
 parseGrid ::
   forall a.
   (Char -> Maybe a) ->
   String ->
   Maybe (GridOf a)
 parseGrid parseCell =
-  fmap l2grid . traverse (traverse parseCell) . lines
-  where
-    l2grid :: [[a]] -> GridOf a
-    l2grid =
-      Map.fromList
-        . concatMap (\(x, l) -> fmap (\(y, v) -> ((x, y), v)) l)
-        . zip [0 ..]
-        . fmap (zip [0 ..])
+  fmap listToGrid . traverse (traverse parseCell) . lines
 
 printGrid :: forall a. (a -> Char) -> GridOf a -> String
 printGrid draw =

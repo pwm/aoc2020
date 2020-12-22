@@ -24,11 +24,14 @@ module AoC.Prelude
     choose,
     slicesOf,
     lookups,
-    applyTimes,
     compose,
+    applyTimes,
+    composeM,
+    applyTimesM,
     substring,
     tupleMin,
     tupleMax,
+    binToDec,
   )
 where
 
@@ -106,11 +109,17 @@ slicesOf n = unfoldr $ \xs ->
 lookups :: Ord k => Map k v -> [k] -> [v]
 lookups g = mapMaybe (g !?)
 
+compose :: [b -> b] -> b -> b
+compose = foldr (.) identity
+
 applyTimes :: Int -> (b -> b) -> b -> b
 applyTimes n = compose . replicate n
 
-compose :: [b -> b] -> b -> b
-compose = foldr (.) identity
+composeM :: (Monad m) => [b -> m b] -> b -> m b
+composeM = foldr (<=<) pure
+
+applyTimesM :: (Monad m) => Int -> (b -> m b) -> b -> m b
+applyTimesM n = composeM . replicate n
 
 substring :: Int -> Int -> String -> String
 substring start end text = take (end - start) (drop start text)
@@ -118,3 +127,6 @@ substring start end text = take (end - start) (drop start text)
 tupleMin, tupleMax :: (Ord a, Each s s a a) => s -> a
 tupleMin = minimum . toListOf each
 tupleMax = maximum . toListOf each
+
+binToDec :: [Int] -> Int
+binToDec = fst . foldr (\n (a, c) -> (a + 2 ^ c * n, c + 1)) (0, 0 :: Int)
