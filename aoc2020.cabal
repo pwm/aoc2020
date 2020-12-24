@@ -39,6 +39,8 @@ data-files:
     input/Day20.txt
     input/Day21.txt
     input/Day22.txt
+    input/Day23.txt
+    input/Day24.txt
 
 source-repository head
   type: git
@@ -70,6 +72,8 @@ library
       AoC.Days.Day20
       AoC.Days.Day21
       AoC.Days.Day22
+      AoC.Days.Day23
+      AoC.Days.Day24
       AoC.Lib.ArgParser
       AoC.Lib.Day
       AoC.Lib.Display
@@ -86,12 +90,13 @@ library
   hs-source-dirs:
       src
   default-extensions: AllowAmbiguousTypes BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia DuplicateRecordFields EmptyCase FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving ImportQualifiedPost InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns NoImplicitPrelude NoStarIsType NumericUnderscores OverloadedLabels OverloadedStrings PatternSynonyms RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving StrictData TupleSections TypeApplications TypeOperators ViewPatterns
-  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2
+  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -fwrite-ide-info -hiedir=.hie
   build-depends:
       base >=4.7 && <5
     , bytestring
     , containers
     , cookie
+    , data-clist
     , directory
     , either
     , extra
@@ -111,6 +116,7 @@ library
     , split
     , text
     , time
+    , vector
   default-language: Haskell2010
 
 executable fetch
@@ -118,13 +124,14 @@ executable fetch
   hs-source-dirs:
       exe
   default-extensions: AllowAmbiguousTypes BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia DuplicateRecordFields EmptyCase FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving ImportQualifiedPost InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns NoImplicitPrelude NoStarIsType NumericUnderscores OverloadedLabels OverloadedStrings PatternSynonyms RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving StrictData TupleSections TypeApplications TypeOperators ViewPatterns
-  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -fwrite-ide-info -hiedir=.hie -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aoc2020
     , base >=4.7 && <5
     , bytestring
     , containers
     , cookie
+    , data-clist
     , directory
     , either
     , extra
@@ -144,6 +151,7 @@ executable fetch
     , split
     , text
     , time
+    , vector
   default-language: Haskell2010
 
 executable solve
@@ -151,13 +159,14 @@ executable solve
   hs-source-dirs:
       exe
   default-extensions: AllowAmbiguousTypes BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia DuplicateRecordFields EmptyCase FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving ImportQualifiedPost InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns NoImplicitPrelude NoStarIsType NumericUnderscores OverloadedLabels OverloadedStrings PatternSynonyms RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving StrictData TupleSections TypeApplications TypeOperators ViewPatterns
-  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -fwrite-ide-info -hiedir=.hie -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aoc2020
     , base >=4.7 && <5
     , bytestring
     , containers
     , cookie
+    , data-clist
     , directory
     , either
     , extra
@@ -177,6 +186,7 @@ executable solve
     , split
     , text
     , time
+    , vector
   default-language: Haskell2010
 
 test-suite spec
@@ -206,12 +216,14 @@ test-suite spec
       AoC.Days.Day20Spec
       AoC.Days.Day21Spec
       AoC.Days.Day22Spec
+      AoC.Days.Day23Spec
+      AoC.Days.Day24Spec
       AoC.DayTester
       Paths_aoc2020
   hs-source-dirs:
       test
   default-extensions: AllowAmbiguousTypes BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia DuplicateRecordFields EmptyCase FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving ImportQualifiedPost InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns NoImplicitPrelude NoStarIsType NumericUnderscores OverloadedLabels OverloadedStrings PatternSynonyms RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving StrictData TupleSections TypeApplications TypeOperators ViewPatterns
-  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -fwrite-ide-info -hiedir=.hie -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       HUnit
     , QuickCheck
@@ -220,6 +232,7 @@ test-suite spec
     , bytestring
     , containers
     , cookie
+    , data-clist
     , directory
     , either
     , extra
@@ -241,5 +254,6 @@ test-suite spec
     , split
     , text
     , time
+    , vector
   default-language: Haskell2010
   build-tool-depends: hspec-discover:hspec-discover == 2.*

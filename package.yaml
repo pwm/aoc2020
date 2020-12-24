@@ -16,6 +16,7 @@ dependencies:
   - bytestring
   - containers
   - cookie
+  - data-clist
   - directory
   - either
   - extra
@@ -35,6 +36,7 @@ dependencies:
   - split
   - text
   - time
+  - vector
 
 library:
   source-dirs: src
@@ -138,3 +140,5 @@ ghc-options:
   - -Wno-missing-export-lists # Don't warn if export list is missing
   - -Wno-missing-home-modules # Don't warn in GHCi when loading modules (this is a bogus warning)
   - -O2
+  - -fwrite-ide-info
+  - -hiedir=.hie
