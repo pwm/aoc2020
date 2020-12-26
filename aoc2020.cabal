@@ -94,7 +94,8 @@ library
   default-extensions: AllowAmbiguousTypes BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia DuplicateRecordFields EmptyCase FlexibleContexts FlexibleInstances FunctionalDependencies GeneralizedNewtypeDeriving ImportQualifiedPost InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns NoImplicitPrelude NoStarIsType NumericUnderscores OverloadedLabels OverloadedStrings PatternSynonyms RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving StrictData TupleSections TypeApplications TypeOperators ViewPatterns
   ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -fwrite-ide-info -hiedir=.hie
   build-depends:
-      base >=4.7 && <5
+      arithmoi
+    , base >=4.7 && <5
     , bytestring
     , containers
     , cookie
@@ -129,6 +130,7 @@ executable fetch
   ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -fwrite-ide-info -hiedir=.hie -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aoc2020
+    , arithmoi
     , base >=4.7 && <5
     , bytestring
     , containers
@@ -164,6 +166,7 @@ executable solve
   ghc-options: -Weverything -Wno-unused-packages -Wno-missing-safe-haskell-mode -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-export-lists -Wno-missing-home-modules -O2 -fwrite-ide-info -hiedir=.hie -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aoc2020
+    , arithmoi
     , base >=4.7 && <5
     , bytestring
     , containers
@@ -231,6 +234,7 @@ test-suite spec
       HUnit
     , QuickCheck
     , aoc2020
+    , arithmoi
     , base >=4.7 && <5
     , bytestring
     , containers

@@ -4,6 +4,7 @@ import AoC.Lib.SimpleParser
 import AoC.Prelude hiding (head)
 import Data.Bitraversable (bisequenceA)
 import Data.List.Split (splitOn)
+import Math.NumberTheory.Moduli.Chinese
 import Prelude (head)
 
 parse :: String -> Maybe (Int, [Int])
@@ -17,8 +18,16 @@ solveA (n, xs) = (closestDep - n) * id
   where
     (closestDep, id) = findClosest n (filter (/= 0) xs)
 
-solveB :: (Int, [Int]) -> ()
-solveB _ = ()
+solveB :: (Int, [Int]) -> Int
+solveB =
+  fromMaybe 0
+    . fmap fromIntegral
+    . chineseRemainder
+    . fmap (bimap fromIntegral fromIntegral)
+    . fmap (\(a, b) -> ((b - a) `mod` b, b))
+    . filter ((/= 0) . snd)
+    . zip [0 ..]
+    . snd
 
 findClosest :: Int -> [Int] -> (Int, Int)
 findClosest n xs =
