@@ -27,7 +27,7 @@ let
     ];
   };
 
-  haskellPackages = haskell.packages.ghc8102.override {
+  haskellPackages = haskell.packages.ghc8104.override {
     overrides =
       let
         generated = haskell.lib.packagesFromDirectory {
@@ -61,6 +61,7 @@ in
       hlint
       ormolu
       niv
+      haskell-language-server
     ];
   };
 }
