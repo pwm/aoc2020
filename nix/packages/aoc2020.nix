@@ -1,9 +1,9 @@
 { mkDerivation, arithmoi, base, bytestring, containers, cookie
 , data-clist, directory, either, extra, generic-lens, hashtables
-, hpack, hspec, hspec-discover, http-client, HUnit, lens, logict
-, massiv, megaparsec, mtl, optparse-applicative, parser-combinators
-, primitive, protolude, QuickCheck, quickcheck-instances, req
-, split, stdenv, text, time, vector
+, hpack, hspec, hspec-discover, http-client, HUnit, lens, lib
+, logict, massiv, megaparsec, mtl, optparse-applicative
+, parser-combinators, primitive, protolude, QuickCheck
+, quickcheck-instances, req, split, text, time, vector
 }:
 mkDerivation {
   pname = "aoc2020";
@@ -35,5 +35,5 @@ mkDerivation {
   testToolDepends = [ hspec-discover ];
   prePatch = "hpack";
   homepage = "https://github.com/pwm/aoc2020#readme";
-  license = stdenv.lib.licenses.bsd3;
+  license = lib.licenses.bsd3;
 }

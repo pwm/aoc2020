@@ -13,5 +13,5 @@ spec =
   dayTester
     (mkDay 21)
     parse
-    (solveA, ())
-    (solveB, ())
+    (solveA, 2_826)
+    (solveB, "pbhthx,sqdsxhb,dgvqv,csnfnl,dnlsjr,xzb,lkdg,rsvlb")
