@@ -37,3 +37,9 @@ integerToDigits i = if i == 0 then [0] else reverse $ unfoldr go (abs i)
 digitsToInteger :: [Int] -> Maybe Integer
 digitsToInteger [] = Nothing
 digitsToInteger xs = Just $ foldl (\i d -> i * 10 + toInteger d) 0 xs
+
+intToDigits :: Int -> [Int]
+intToDigits = integerToDigits . fromIntegral
+
+digitsToInt :: [Int] -> Maybe Int
+digitsToInt = fmap fromIntegral . digitsToInteger

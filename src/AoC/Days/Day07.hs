@@ -34,7 +34,7 @@ splitAdjMapOn k m =
       as = filterVerts . reachable (transposeG g) <$> k2v k
       ds = filterVerts . reachable g <$> k2v k
    in (fromMaybe mempty as, fromMaybe mempty ds)
-
+ 
 numBagsOf :: Key -> AdjMap -> Int
 numBagsOf k0 m =
   foldTree (\(x, _) xs -> x + x * sum xs)

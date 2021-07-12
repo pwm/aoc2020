@@ -17,8 +17,8 @@ newtype Day = UnsafeMkDay Int
 
 mkDay :: Int -> Either String Day
 mkDay i
-  | 0 <= i && i <= 25 = Right $ UnsafeMkDay i
-  | otherwise = Left "Valid days are in the [0..25] range"
+  | 0 <= i && i <= maxDayNum = Right $ UnsafeMkDay i
+  | otherwise = Left $ "Valid days are in the [0.." <> show maxDayNum <> "] range"
 
 getDay :: Day -> Int
 getDay (UnsafeMkDay i) = i
@@ -30,4 +30,7 @@ displayDayFile :: Day -> String
 displayDayFile d = "Day" <> displayDay d <> ".txt"
 
 solutionsMapper :: [sols] -> Map Day sols
-solutionsMapper = Map.fromList . zip (fmap UnsafeMkDay [0 .. 25])
+solutionsMapper = Map.fromList . zip (fmap UnsafeMkDay [0 .. maxDayNum])
+
+maxDayNum :: Int
+maxDayNum = 25

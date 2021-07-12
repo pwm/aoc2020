@@ -78,11 +78,11 @@ enumerate = enumFrom (minBound @a)
 
 -- {a, b} -> [(a, 1), (b, 2), (c, 3)] -> True
 -- {a, b, c} -> [(a, 1), (b, 2)] -> False
-hasKeys :: Ord a => Set a -> Map a b -> Bool
+hasKeys :: (Ord a) => Set a -> Map a b -> Bool
 hasKeys keys = Set.isSubsetOf keys . Map.keysSet
 
 -- [2,3,1,2] -> [3,2,2,1]
-rsort :: Ord a => [a] -> [a]
+rsort :: (Ord a) => [a] -> [a]
 rsort = sortOn Down
 
 -- 2 "abcd" -> Just 'c'
@@ -106,16 +106,16 @@ slicesOf n = unfoldr $ \xs ->
   let (s, t) = (take n xs, drop 1 xs)
    in if length s >= n then Just (s, t) else Nothing
 
-lookups :: Ord k => Map k v -> [k] -> [v]
+lookups :: (Ord k) => Map k v -> [k] -> [v]
 lookups g = mapMaybe (g !?)
 
-compose :: [b -> b] -> b -> b
+compose :: (Foldable t) => t (b -> b) -> b -> b
 compose = foldr (.) identity
 
 applyTimes :: Int -> (b -> b) -> b -> b
 applyTimes n = compose . replicate n
 
-composeM :: (Monad m) => [b -> m b] -> b -> m b
+composeM :: (Foldable t, Monad m) => t (b -> m b) -> b -> m b
 composeM = foldr (<=<) pure
 
 applyTimesM :: (Monad m) => Int -> (b -> m b) -> b -> m b
