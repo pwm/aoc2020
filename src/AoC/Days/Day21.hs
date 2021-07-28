@@ -26,7 +26,7 @@ solve = observe . go mempty
       if done foods
         then pure (m, foods)
         else do
-          (foods', (i, a)) <- pick (candidates foods)
+          (foods', (i, a)) <- choose (candidates foods)
           go (Map.insert a i m) foods'
 
 invariant :: AllergenMap -> [Food] -> Bool
@@ -38,9 +38,6 @@ invariant m foods =
 
 done :: [Food] -> Bool
 done = null . allergens
-
-pick :: [a] -> LogicT m a
-pick = asum . fmap pure
 
 candidates :: [Food] -> [([Food], (Ingredient, Allergen))]
 candidates foods = removeChoice foods <$> choicesForNextA foods

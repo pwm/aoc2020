@@ -13,4 +13,4 @@ solveB :: [Int] -> Int
 solveB = headOr 0 . solveFor 3
 
 solveFor :: Int -> [Int] -> [Int]
-solveFor n = fmap product . filter ((2020 ==) . sum) . choose n
+solveFor n = fmap product . filter ((2020 ==) . sum) . pick n

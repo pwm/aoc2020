@@ -17,7 +17,7 @@ solveB xs = uncurry (+) . (minimum &&& maximum) . findSubsetSum 2 (solveA xs) $ 
 firstNotSumOf :: [Int] -> [Int] -> Int
 firstNotSumOf p xs =
   let (x, t) = (UNSAFE.head xs, drop 1 xs)
-   in if any ((x ==) . sum) $ choose 2 p
+   in if any ((x ==) . sum) $ pick 2 p
         then firstNotSumOf (drop 1 p <> [x]) t
         else x
 

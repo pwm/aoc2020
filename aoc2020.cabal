@@ -154,6 +154,7 @@ library
     , mtl
     , optparse-applicative
     , parser-combinators
+    , pretty-simple
     , primitive
     , protolude
     , req
@@ -231,6 +232,7 @@ executable fetch
     , mtl
     , optparse-applicative
     , parser-combinators
+    , pretty-simple
     , primitive
     , protolude
     , req
@@ -308,6 +310,7 @@ executable solve
     , mtl
     , optparse-applicative
     , parser-combinators
+    , pretty-simple
     , primitive
     , protolude
     , req
@@ -418,6 +421,7 @@ test-suite spec
     , mtl
     , optparse-applicative
     , parser-combinators
+    , pretty-simple
     , primitive
     , protolude
     , quickcheck-instances

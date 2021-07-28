@@ -11,6 +11,9 @@ type GridOf a = Map Pos a
 data Dir4 = U | R | D | L
   deriving stock (Show, Eq, Ord, Bounded, Enum, Generic)
 
+d4s :: [Dir4]
+d4s = enumerate
+
 d2p4 :: Dir4 -> Pos
 d2p4 d = Map.fromList (zip enumerate n4) ! d
 
@@ -24,6 +27,9 @@ move4 = moveWith d2p4
 
 data Dir8 = N | NE | E | SE | S | SW | W | NW
   deriving stock (Show, Eq, Ord, Bounded, Enum, Generic)
+
+d8s :: [Dir8]
+d8s = enumerate
 
 d2p8 :: Dir8 -> Pos
 d2p8 d = Map.fromList (zip enumerate n8) ! d
@@ -83,8 +89,8 @@ manhattan (x1, y1) (x2, y2) = abs (x1 - x2) + abs (y1 - y2)
 mkRect :: Int -> Int -> Int -> Int -> [Pos]
 mkRect ln hn lm hm = (,) <$> [ln .. hn] <*> [lm .. hm]
 
-mkSquare :: Int -> Int -> [Pos]
-mkSquare ln hn = mkRect ln hn ln hn
+mkSquare :: Int -> [Pos]
+mkSquare n = mkRect 0 (n - 1) 0 (n - 1)
 
 --
 

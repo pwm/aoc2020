@@ -15,13 +15,14 @@ module AoC.Prelude
     fixpoint,
     fixpointM,
     headOr,
+    dropEnd,
     enumerate,
     hasKeys,
     rsort,
     charAt,
     l2p,
     getDataFileName,
-    choose,
+    pick,
     slicesOf,
     lookups,
     compose,
@@ -32,6 +33,8 @@ module AoC.Prelude
     tupleMin,
     tupleMax,
     binToDec,
+    sqrtInt,
+    choose,
   )
 where
 
@@ -72,6 +75,10 @@ fixpointM f x = do
 headOr :: a -> [a] -> a
 headOr x = fromMaybe x . head
 
+-- dropEnd 1 [1..3] -> [1, 2]
+dropEnd :: Int -> [a] -> [a]
+dropEnd n xs = take (length xs - n) xs
+
 -- enumerate @Bool -> [False,True]
 enumerate :: forall a. (Bounded a, Enum a) => [a]
 enumerate = enumFrom (minBound @a)
@@ -96,10 +103,10 @@ l2p :: [a] -> Maybe (a, a)
 l2p [a, b] = Just (a, b)
 l2p _ = Nothing
 
-choose :: Int -> [a] -> [[a]]
-choose 0 _ = [[]]
-choose _ [] = []
-choose k (x : xs) = fmap (x :) (choose (k - 1) xs) <> choose k xs
+pick :: Int -> [a] -> [[a]]
+pick 0 _ = [[]]
+pick _ [] = []
+pick k (x : xs) = fmap (x :) (pick (k - 1) xs) <> pick k xs
 
 slicesOf :: Int -> [a] -> [[a]]
 slicesOf n = unfoldr $ \xs ->
@@ -128,5 +135,11 @@ tupleMin, tupleMax :: (Ord a, Each s s a a) => s -> a
 tupleMin = minimum . toListOf each
 tupleMax = maximum . toListOf each
 
-binToDec :: [Int] -> Int
-binToDec = fst . foldr (\n (a, c) -> (a + 2 ^ c * n, c + 1)) (0, 0 :: Int)
+binToDec :: [Bool] -> Integer
+binToDec = foldl' (\acc x -> 2 * acc + toInteger (fromEnum x)) 0
+
+sqrtInt :: Int -> Int
+sqrtInt = floor @Double . sqrt . fromIntegral
+
+choose :: (Traversable t, Alternative m) => t a -> m a
+choose = asum . fmap pure

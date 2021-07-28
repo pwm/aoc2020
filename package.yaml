@@ -31,6 +31,7 @@ dependencies:
   - mtl
   - optparse-applicative
   - parser-combinators
+  - pretty-simple
   - primitive
   - protolude
   - req

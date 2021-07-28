@@ -4,13 +4,14 @@ module AoC.Days.Day20Spec
 where
 
 import AoC.DayTester
+import AoC.Days.Day20
 import AoC.Lib.Day
 import Test.Hspec
 
 spec :: Spec
 spec =
-  dayTesterPending
+  dayTester
     (mkDay 20)
-    parsePending
-    runPending
-    runPending
+    parse
+    (solveA, 12_519_494_280_967)
+    (solveB, 2_442)
